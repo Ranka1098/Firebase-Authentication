@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { usefirebase } from "../context/Firebase";
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const firebase = usefirebase();
-    console.log(firebase);
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      console.log("log in a user");
-      const result = await firebase.login(email,password)
-      console.log("sucessfully log in" , result);
-    };
- 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const firebase = usefirebase();
+  console.log(firebase);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("log in a user");
+    const result = await firebase.login(email, password);
+    console.log("sucessfully log in", result);
+  };
+
   return (
-     <div>
-         <h1>Login</h1>
+    <div>
+      <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <br />
@@ -39,8 +39,10 @@ const Login = () => {
         <br />
         <button>Login</button>
       </form>
-     </div>
-   
+      <br />
+      <br />
+      <button onClick={firebase.SignInWithGoogle}>Signin-with-google </button>
+    </div>
   );
 };
 
