@@ -3,4 +3,5 @@
  -install react-router-dom
  -insatll firebase
  -app component ko firbase component me wrap karte hai
- 
+- routing setup
+ -RegisterForm component created
