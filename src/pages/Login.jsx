@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { usefirebase } from "../context/Firebase";
 
-const RegisterForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const firebase = usefirebase();
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("signup user");
-    const result = await firebase.signUp(email, password);
-    console.log("sucessfull", result);
-  };
+const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const firebase = usefirebase();
+    console.log(firebase);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      console.log("log in a user");
+      const result = await firebase.login(email,password)
+      console.log("sucessfully log in" , result);
+    };
+ 
   return (
-    <div>
-      <h1>SignUp Form</h1>
+     <div>
+         <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <label>Email</label>
         <br />
@@ -35,10 +37,11 @@ const RegisterForm = () => {
           autoComplete="off"
         />
         <br />
-        <button>Create Account</button>
+        <button>Login</button>
       </form>
-    </div>
+     </div>
+   
   );
 };
 
-export default RegisterForm;
+export default Login;
