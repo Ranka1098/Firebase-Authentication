@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usefirebase } from "../context/Firebase";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const firebase = usefirebase();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +14,14 @@ const RegisterForm = () => {
     const result = await firebase.signUp(email, password);
     console.log("sucessfull", result);
   };
+
+  useEffect(()=>{
+    if(firebase.loggedIn){
+    // navigate to home
+    navigate("/")
+  
+    }
+    },[firebase ,navigate])
   return (
     <div>
       <h1>SignUp Form</h1>
